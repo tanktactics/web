@@ -1,0 +1,27 @@
+@import url("./variables.scss");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
+body, html {
+    margin: 0;
+    background: var(--body);
+
+    color: var(--text);
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* reset margins */
+*, *::before, *::after {
+	margin: 0;
+}
+
+/* inherit font */
+button, input {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
