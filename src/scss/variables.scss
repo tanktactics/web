@@ -1,5 +1,24 @@
 :root {
-	--body: rgb(255, 255, 255);
-	--text: rgb(0, 0, 0);
-    --border-radius: 15px;
-}
+	--body: white;
+	--content: #f8f9fa;
+	--text: #444444;
+	--text-secondary: #4c4c4c;
+	--theme: #457461;
+	--overlay-color: rgba(0, 0, 0, 0.05);
+	--negative: #ff2d55;
+	--border: rgba(0, 0, 0, 0.1);
+	--anchor: #007aff;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+	:root {
+	  --body: #23272d;
+	  --content: #16191f;
+	  --text: #e9ecef;
+	  --text-secondary: #ccd0d4;
+	  --overlay-color: rgba(255, 255, 255, 0.05);
+	  --negative: rgb(255, 69, 58);
+	  --border: rgba(255, 255, 255, 0.1);
+	  --anchor: #5ac8fa;
+	}
+  }
