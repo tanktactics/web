@@ -5,6 +5,7 @@
       <p>{{ $t("points") }}: {{ points }}</p>
       <p>{{ $t("health") }}: {{ health }}</p>
       <p>{{ $t("range") }}: {{ range }}</p>
+      <p>{{ $t("kills") }}: {{ kills }}</p>
     </div>
   </Card>
 </template>
@@ -41,6 +42,9 @@ export default defineComponent({
       type: Number,
     },
     range: {
+      type: Number,
+    },
+    kills: {
       type: Number,
     },
   },

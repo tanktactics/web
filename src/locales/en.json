@@ -1,3 +1,6 @@
 {
-    "message": "Hello world!"
+    "message": "Hello world!",
+    "health": "Health",
+    "points": "Points",
+    "kills": "Kills"
 }

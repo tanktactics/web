@@ -17,6 +17,7 @@
             :points="player.points"
             :health="player.health"
             :range="player.range"
+            :kills="player.kills"
           />
         </div>
       </div>
