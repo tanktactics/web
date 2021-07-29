@@ -1,6 +1,26 @@
 <template>
   <div class="game-viewer-wrapper">
-    <Heading1 subheading="Tank Tactics">{{ gameData.name }}</Heading1>
+    <div class="header">
+      <Heading1 subheading="Tank Tactics">
+        <span>{{ gameData.name }}</span>
+      </Heading1>
+      <!-- TODO: add scroll dragging -->
+      <div class="players">
+        <div v-for="(player, index) in gameData.players" :key="index">
+          <div
+            :style="{ backgroundImage: `url(${player.icon})` }"
+            class="avatar"
+          ></div>
+          <HoverCard
+            class="hover-card"
+            :username="player.name"
+            :points="player.points"
+            :health="player.health"
+            :range="player.range"
+          />
+        </div>
+      </div>
+    </div>
 
     <div class="board">
       <panZoom selector=".zoomable">
@@ -29,6 +49,41 @@
 </template>
 
 <style lang="scss" scoped>
+.header {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-gap: var(--gap);
+  align-items: center;
+  margin-bottom: var(--gap);
+}
+
+.players {
+  width: 100%;
+  display: flex;
+  gap: var(--gap);
+  cursor: pointer;
+  overflow-x: scroll;
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    background-position: center;
+    background-size: cover;
+
+    &:hover ~ .hover-card {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.hover-card {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .board {
   width: 100%;
   max-height: 90vh;
@@ -41,6 +96,7 @@
     display: flex;
     flex-wrap: nowrap;
   }
+
   .cell {
     width: 1rem;
     height: 1rem;
@@ -54,11 +110,13 @@
 <script>
 import Heading1 from "@/components/util/Heading1.vue";
 import Cell from "@/components/util/Cell.vue";
+import HoverCard from "@/components/base/HoverCard.vue";
 
 export default {
   components: {
     Heading1,
     Cell,
+    HoverCard,
   },
   props: {
     gameData: {
@@ -67,13 +125,10 @@ export default {
     },
   },
   setup(props) {
-    console.log(props.gameData);
-
     const getCellHtml = (x, y) => {
-      let players = props.gameData.players;
-      // console.log(players);
+      const players = props.gameData.players;
 
-      let closestPlayers = players
+      const closestPlayers = players
         .map((player) => {
           let distance = Math.max(disX, disY);
 
