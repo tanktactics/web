@@ -5,9 +5,6 @@
 </template>
 
 <style lang="scss" scoped>
-h1 {
-  margin-bottom: 60px;
-}
 h1[data-subheading]::before {
   content: attr(data-subheading);
   font-size: 1rem;
