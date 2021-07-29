@@ -9,6 +9,7 @@
   border-radius: 50%;
   border: var(--border);
 
+  background-color: var(--content);
   background-position: center;
   background-size: cover;
 }
