@@ -7,10 +7,7 @@
       <!-- TODO: add scroll dragging -->
       <div class="players">
         <div v-for="(player, index) in gameData.players" :key="index">
-          <div
-            :style="{ backgroundImage: `url(${player.icon})` }"
-            class="avatar"
-          ></div>
+          <Avatar :url="player.icon" />
           <HoverCard
             class="hover-card"
             :username="player.name"
@@ -65,18 +62,9 @@
   cursor: pointer;
   overflow-x: scroll;
 
-  .avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-
-    background-position: center;
-    background-size: cover;
-
-    &:hover ~ .hover-card {
-      visibility: visible;
-      opacity: 1;
-    }
+  .avatar:hover ~ .hover-card {
+    visibility: visible;
+    opacity: 1;
   }
 }
 
@@ -112,12 +100,14 @@
 import Heading1 from "@/components/util/Heading1.vue";
 import Cell from "@/components/util/Cell.vue";
 import HoverCard from "@/components/base/HoverCard.vue";
+import Avatar from "@/components/base/Avatar.vue";
 
 export default {
   components: {
     Heading1,
     Cell,
     HoverCard,
+    Avatar,
   },
   props: {
     gameData: {
