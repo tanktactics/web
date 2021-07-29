@@ -6,7 +6,7 @@
 	--theme: #457461;
 	--overlay-color: rgba(0, 0, 0, 0.05);
 	--negative: #ff2d55;
-	--border: rgba(0, 0, 0, 0.1);
+	--border: 1px solid rgba(0, 0, 0, 0.1);
 	--anchor: #007aff;
 
 	--gap: 15px;
@@ -22,7 +22,7 @@
 	  --text-secondary: #ccd0d4;
 	  --overlay-color: rgba(255, 255, 255, 0.05);
 	  --negative: rgb(255, 69, 58);
-	  --border: rgba(255, 255, 255, 0.1);
+	  --border: 1px solid rgba(255, 255, 255, 0.1);
 	  --anchor: #5ac8fa;
 	}
   }
