@@ -138,6 +138,13 @@ export default {
       if (closestPlayers[0].distance === 0) {
         return "t";
       }
+
+      for (const player of players) {
+        if (player.coords.x == x && player.coords.y == y) {
+          return `<img src="${player.icon}" width="100%" height="100%" alt="${player.name}" />`;
+        }
+      }
+
       return "";
     };
 
