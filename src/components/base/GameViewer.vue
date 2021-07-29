@@ -5,7 +5,12 @@
         <span>{{ gameData.name }}</span>
       </Heading1>
       <!-- TODO: add scroll dragging -->
-      <div class="players">
+      <div
+        class="players"
+        ref="scroll"
+        @mousemove="mouseMoveHandler"
+        @mouseup="mouseUpHandler"
+      >
         <div v-for="(player, index) in gameData.players" :key="index">
           <Avatar :url="player.icon" />
           <HoverCard
@@ -21,27 +26,23 @@
     </div>
 
     <div class="board">
-      <panZoom selector=".zoomable">
-        <div class="zoomable">
-          <div
-            class="row"
-            v-for="y of Array(gameData.boardHeight)
-              .fill(0)
-              .map((_, i) => i)"
-            :key="`y-${y}`"
-          >
-            <div
-              class="column"
-              v-for="x of Array(gameData.boardWidth)
-                .fill(0)
-                .map((_, i) => i)"
-              :key="`y-${x}`"
-            >
-              <Cell v-html="getCellHtml(x, y)" />
-            </div>
-          </div>
+      <div
+        class="row"
+        v-for="y of Array(gameData.boardHeight)
+          .fill(0)
+          .map((_, i) => i)"
+        :key="`y-${y}`"
+      >
+        <div
+          class="column"
+          v-for="x of Array(gameData.boardWidth)
+            .fill(0)
+            .map((_, i) => i)"
+          :key="`x-${x}`"
+        >
+          <Cell v-html="getCellHtml(x, y)" />
         </div>
-      </panZoom>
+      </div>
     </div>
   </div>
 </template>
@@ -96,13 +97,15 @@
 }
 </style>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import Heading1 from "@/components/util/Heading1.vue";
 import Cell from "@/components/util/Cell.vue";
 import HoverCard from "@/components/base/HoverCard.vue";
 import Avatar from "@/components/base/Avatar.vue";
+import { Player } from "@/types/player";
 
-export default {
+export default defineComponent({
   components: {
     Heading1,
     Cell,
@@ -115,23 +118,23 @@ export default {
       required: true,
     },
   },
-  setup(props) {
-    const getCellHtml = (x, y) => {
+  setup(props: any) {
+    const getCellHtml = (x: number, y: number) => {
       const players = props.gameData.players;
 
       const closestPlayers = players
-        .map((player) => {
-          let distance = Math.max(disX, disY);
+        .map((player: Player) => {
+          let disX = Math.abs(player.coords.x - x);
+          let disY = Math.abs(player.coords.y - y);
 
-          let disX = Math.abs(player.x - x);
-          let disY = Math.abs(player.y - y);
+          let distance = Math.max(disX, disY);
           let distance2 = Math.sqrt(disX * disX + disY * disY);
 
           player.distance = distance;
           player.distance2 = distance2;
           return player;
         })
-        .sort((a, b) => a.distance - b.distance);
+        .sort((a: any, b: any) => a.distance - b.distance);
 
       // let color = closestPlayers[0].t ?? "red";
 
@@ -152,5 +155,5 @@ export default {
       getCellHtml,
     };
   },
-};
+});
 </script>
