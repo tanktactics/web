@@ -1,28 +1,27 @@
 <template>
   <div>
-    <!-- <h1>{{ $t("message") }}</h1> -->
-    <div class="tmp-container">
-      <GameViewer :game-data="gameData" />
-    </div>
+    <Container>
+      <GameViewer :game-data="gameData" class="game" />
+    </Container>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.tmp-container {
-  margin: 90px auto;
-  width: 95%;
-  max-width: 1000px;
+.game {
+  margin-top: 60px;
 }
 </style>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
+import Container from "@/components/layout/Container.vue";
 import GameViewer from "@/components/base/GameViewer.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
+    Container,
     GameViewer,
   },
   setup() {
@@ -173,6 +172,51 @@ export default defineComponent({
             },
             distance: 27,
             distance2: 27.16615541441225,
+          },
+          {
+            id: 10,
+            name: "Siem#1337",
+            icon: "https://cdn.discordapp.com/avatars/195835034559709184/87e918969d6ef189add67f86e2f61c4f.png",
+            points: 2,
+            range: 2,
+            health: 3,
+            kills: 0,
+            coords: {
+              x: 81,
+              y: 22,
+            },
+            distance: 37,
+            distance2: 39.56008088970496,
+          },
+          {
+            id: 4,
+            name: "Martijn#6372",
+            icon: "https://cdn.discordapp.com/avatars/585495804932784173/d81440e9c982fdc67de05b3fbf246e19.png",
+            points: 2,
+            range: 2,
+            health: 3,
+            kills: 0,
+            coords: {
+              x: 68,
+              y: 8,
+            },
+            distance: 51,
+            distance2: 57.706152185014034,
+          },
+          {
+            id: 1,
+            name: "Jip#9051",
+            icon: "https://cdn.discordapp.com/avatars/159704489970892800/a_1559c4dc542fce82a9a7c42c8f346d8c.png",
+            points: 0,
+            range: 2,
+            health: 3,
+            kills: 0,
+            coords: {
+              x: 66,
+              y: 3,
+            },
+            distance: 56,
+            distance2: 63.06346010171025,
           },
           {
             id: 10,
