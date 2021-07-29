@@ -78,7 +78,7 @@
   max-height: 90vh;
   overflow-x: auto; // Overflow is just temp.
   overflow-y: auto;
-  border: 1px solid var(--border);
+  border: var(--border);
   --gap: 1px;
 
   .row {

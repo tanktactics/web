@@ -7,6 +7,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
+  border: var(--border);
 
   background-position: center;
   background-size: cover;
